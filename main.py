@@ -10,6 +10,14 @@ from schedule import *
 r = sr.Recognizer()
 mic = sr.Microphone()
 
+def get_path(program):
+    paths = {
+        "spotify": 'C:\\Users\\bradl\\AppData\\Roaming\\Spotify\\Spotify.exe',
+
+    }
+    zoom_links = {
+        
+    }
 def open_program(transcript):
     if 'spotify' in transcript:
         subprocess.call('C:\\Users\\bradl\\AppData\\Roaming\\Spotify\\Spotify.exe')
