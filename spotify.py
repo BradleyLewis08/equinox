@@ -9,13 +9,12 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import requests
 
-
 def authenticate():
-    username = "cn5jjcibmzjy628o0srxs9tzf"
+    username = os.environ.get("spotify-username")
     scope = 'user-read-private streaming user-read-playback-state user-modify-playback-state'
     redirect_uri = "https://www.google.com"
-    CLIENT_ID = '8eb38b719b8e40a9b4b9b67d67728356'
-    CLIENT_SECRET = 'a3bfa4e95428427980c48227201c9003'
+    CLIENT_ID = os.environ.get("spotify-client-id")
+    CLIENT_SECRET = os.environ.get("spotify-client-secret")
     token = util.prompt_for_user_token(username, scope, CLIENT_ID, CLIENT_SECRET, redirect_uri)
     sp = spotipy.Spotify(auth=token)
     return sp
@@ -39,10 +38,4 @@ def pause_track():
     else:
         print("I'm not playing anything right now.")
 
-
-"""
-Debugging
-devices = sp.devices()
-print(json.dumps(devices, sort_keys=True, indent=4))
-print(json.dumps(tracks, sort_keys=True, indent=4))
-"""
+play_track("Circles")
